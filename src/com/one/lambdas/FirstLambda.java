@@ -23,6 +23,7 @@ public class FirstLambda {
     }
 }
 
+//functional interface, it has only one abstract method
 interface I{
     void m();
 }
