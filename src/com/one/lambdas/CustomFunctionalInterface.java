@@ -1,5 +1,6 @@
 package com.one.lambdas;
 
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 public class CustomFunctionalInterface {
@@ -26,6 +27,12 @@ public class CustomFunctionalInterface {
 
         name = "Ms. Anushka Sharma";
         System.out.println("Does " + name + "Starts with Mr.?"+ check(name, n -> n.startsWith("Mr.")));
+
+        Predicate<String> pStr = s -> s.contains("City");
+        System.out.println(pStr.test("Vathican City"));
+
+        BiPredicate<String, Integer> checkLength = (str, len) -> str.length() == len;
+        System.out.println("Galle City: " + checkLength.test("Vathican City", 8));
     }
 
     public static <T> boolean check(T t, Predicate<T> lambda) {
