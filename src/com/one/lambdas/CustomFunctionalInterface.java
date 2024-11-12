@@ -62,6 +62,14 @@ public class CustomFunctionalInterface {
         BiConsumer<String, String> mapPrint = (key, value) -> System.out.println(key + " is the Capital of: "+ value);
         mapCapitalCities.forEach(mapPrint);
 
+        Function<String, Integer> fn = s -> s.length();
+        System.out.println("Function: " + fn.apply("Moscow"));
+
+        BiFunction<String, String, Integer> biFn = (s1,s2) -> s1.length() + s2.length();
+        System.out.println("BiFunction: " + biFn.apply("William", "Shakespear"));
+
+        BiFunction<String, String, String> biFn2 = (s1,s2) -> s1.concat(s2);
+        System.out.println("BiFunction: " + biFn2.apply("William ", "Shakespear"));
     }
 
     public static <T> boolean check(T t, Predicate<T> lambda) {
