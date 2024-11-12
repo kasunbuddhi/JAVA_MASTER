@@ -70,6 +70,12 @@ public class CustomFunctionalInterface {
 
         BiFunction<String, String, String> biFn2 = (s1,s2) -> s1.concat(s2);
         System.out.println("BiFunction: " + biFn2.apply("William ", "Shakespear"));
+
+        UnaryOperator<String> unaryOp = name1 -> "My Name is " + name1;
+        System.out.println("UnaryOperator: " + unaryOp.apply("Kasun"));
+
+        BinaryOperator<String>  binaryOp = (s1, s2) -> s1.concat(s2);
+        System.out.println("BinaryOperator: " + binaryOp.apply("Kasun", "Buddhi"));
     }
 
     public static <T> boolean check(T t, Predicate<T> lambda) {
