@@ -1,9 +1,10 @@
 package com.one.lambdas;
 
 import java.time.LocalTime;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.function.*;
 
 public class CustomFunctionalInterface {
     public static void main(String[] args) {
@@ -44,6 +45,23 @@ public class CustomFunctionalInterface {
 
         Supplier<Double> supRand = () -> Math.random();
         System.out.println(supRand.get());
+
+        Consumer<String> printC = s -> System.out.println(s);
+        printC.accept("Consumer Interface");
+
+        List<String> names = new ArrayList<>();
+        names.add("John"); names.add("Mary");
+        names.forEach(printC);
+
+        var mapCapitalCities = new HashMap<String, String>();
+        BiConsumer<String, String> biCon = (key, value) -> mapCapitalCities.put(key, value);
+        biCon.accept("Dublin", "Ireland");
+        biCon.accept("Washington D.C", "USA");
+        System.out.println(mapCapitalCities);
+
+        BiConsumer<String, String> mapPrint = (key, value) -> System.out.println(key + " is the Capital of: "+ value);
+        mapCapitalCities.forEach(mapPrint);
+
     }
 
     public static <T> boolean check(T t, Predicate<T> lambda) {
