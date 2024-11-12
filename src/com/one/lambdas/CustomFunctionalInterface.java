@@ -16,7 +16,6 @@ public class CustomFunctionalInterface {
         System.out.println("Evaluate: " + lambda2.isNavigate(-1));
         System.out.println("Evaluate: " + lambda2.isNavigate(+1));
     }
-
 }
 
 interface Evaluate<T> {
