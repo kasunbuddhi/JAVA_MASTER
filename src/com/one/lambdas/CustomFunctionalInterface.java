@@ -1,7 +1,9 @@
 package com.one.lambdas;
 
+import java.time.LocalTime;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class CustomFunctionalInterface {
     public static void main(String[] args) {
@@ -29,10 +31,19 @@ public class CustomFunctionalInterface {
         System.out.println("Does " + name + "Starts with Mr.?"+ check(name, n -> n.startsWith("Mr.")));
 
         Predicate<String> pStr = s -> s.contains("City");
-        System.out.println(pStr.test("Vathican City"));
+        System.out.println(pStr.test("Galle City"));
 
         BiPredicate<String, Integer> checkLength = (str, len) -> str.length() == len;
-        System.out.println("Galle City: " + checkLength.test("Vathican City", 8));
+        System.out.println("Galle City: " + checkLength.test("Galle City", 8));
+
+        Supplier<StringBuilder> supSB = () -> new StringBuilder();
+        System.out.println("Supplier SB: " + supSB.get().append("SK"));
+
+        Supplier<LocalTime> supTime = () -> LocalTime.now();
+        System.out.println("Supplier Time: " + supTime.get());
+
+        Supplier<Double> supRand = () -> Math.random();
+        System.out.println(supRand.get());
     }
 
     public static <T> boolean check(T t, Predicate<T> lambda) {
