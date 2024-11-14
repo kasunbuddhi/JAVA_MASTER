@@ -1,10 +1,7 @@
 package com.one.lambdas;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.function.*;
 
 public class CustomFunctionalInterface {
@@ -101,6 +98,17 @@ public class CustomFunctionalInterface {
         printC.accept(concatL.apply("kasun ", "Buddhi"));
         printC.accept(concatMR.apply("kasun ", "Buddhi"));
 
+        // Static Method Reference
+        Consumer<List<Integer>> sortL = list -> Collections.sort(list);
+        Consumer<List<Integer>> sortMR =  Collections::sort;
+
+        List<Integer> numberList = Arrays.asList(2,3,9,4,8,7);
+        sortL.accept(numberList);
+        System.out.println(numberList);
+
+        numberList = Arrays.asList(2,3,9,4,8,7);
+        sortMR.accept(numberList);
+        System.out.println(numberList);
     }
 
     public static <T> boolean check(T t, Predicate<T> lambda) {
