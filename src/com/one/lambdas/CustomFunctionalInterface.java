@@ -109,6 +109,14 @@ public class CustomFunctionalInterface {
         numberList = Arrays.asList(2,3,9,4,8,7);
         sortMR.accept(numberList);
         System.out.println(numberList);
+
+        Supplier<StringBuilder> sbl = () -> new StringBuilder();
+        Supplier<StringBuilder> sblMR = StringBuilder::new;
+
+        StringBuilder sb1 = sbl.get(); sb1.append("lambda version"); printC.accept(sb1.toString());
+        StringBuilder sb2 = sblMR.get(); sb2.append("Method Reference version"); printC.accept(sb2.toString());
+
+
     }
 
     public static <T> boolean check(T t, Predicate<T> lambda) {
