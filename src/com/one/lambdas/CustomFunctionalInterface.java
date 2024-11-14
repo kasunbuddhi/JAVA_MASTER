@@ -90,6 +90,16 @@ public class CustomFunctionalInterface {
         namesList.forEach(s -> System.out.println(s));
         namesList.forEach(System.out::println);
 
+        // Unbound Method Reference
+        Function<String, String> upperL = s -> s.toUpperCase();
+        Function<String, String> upperMR = String::toUpperCase;
+        printC.accept(upperL.apply("kasun"));
+        printC.accept(upperMR.apply("kasun"));
+
+        BiFunction<String, String, String> concatL = (s1, s2) -> s1.concat(s2);
+        BiFunction<String, String, String> concatMR = String::concat;
+        printC.accept(concatL.apply("kasun ", "Buddhi"));
+        printC.accept(concatMR.apply("kasun ", "Buddhi"));
 
     }
 
