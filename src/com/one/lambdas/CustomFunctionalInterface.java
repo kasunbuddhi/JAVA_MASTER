@@ -2,6 +2,7 @@ package com.one.lambdas;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.*;
@@ -76,6 +77,20 @@ public class CustomFunctionalInterface {
 
         BinaryOperator<String>  binaryOp = (s1, s2) -> s1.concat(s2);
         System.out.println("BinaryOperator: " + binaryOp.apply("Kasun", "Buddhi"));
+
+        ArrayList<String> al = new ArrayList<>();
+        al.add("a");al.add("b");
+        Consumer<String> stringConsumer = System.out::println;
+        for(int i=0; i< al.size(); i++) {
+            stringConsumer.accept(al.get(i));
+        }
+
+        // Bound Method Reference
+        List<String> namesList = Arrays.asList("Peter", "Mary", "John");
+        namesList.forEach(s -> System.out.println(s));
+        namesList.forEach(System.out::println);
+
+
     }
 
     public static <T> boolean check(T t, Predicate<T> lambda) {
