@@ -117,6 +117,18 @@ public class CustomFunctionalInterface {
         StringBuilder sb1 = sbl.get(); sb1.append("lambda version"); printC.accept(sb1.toString());
         StringBuilder sb2 = sblMR.get(); sb2.append("Method Reference version"); printC.accept(sb2.toString());
 
+        Function<Integer, List<String>> alL = l -> new ArrayList(l);
+        Function<Integer, List<String>> alMR = ArrayList::new;
+
+        List<String> ls1 = alL.apply(10);
+        ls1.add("21");
+        System.out.println(ls1);
+
+        List<String> ls2 = alMR.apply(5);
+        ls2.add("88");
+        System.out.println(ls2);
+
+
 
     }
 
