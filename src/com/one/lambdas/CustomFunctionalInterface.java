@@ -110,6 +110,7 @@ public class CustomFunctionalInterface {
         sortMR.accept(numberList);
         System.out.println(numberList);
 
+        // Constructor Method Reference
         Supplier<StringBuilder> sbl = () -> new StringBuilder();
         Supplier<StringBuilder> sblMR = StringBuilder::new;
 
