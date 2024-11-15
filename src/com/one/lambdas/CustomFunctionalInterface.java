@@ -128,7 +128,21 @@ public class CustomFunctionalInterface {
         ls2.add("88");
         System.out.println(ls2);
 
+        //Method Reference at Context
+        Function<Person, Integer> personL = person -> Person.howMany(person);
+        Function<Person, Integer> personMR = Person::howMany;
+        System.out.println(personL.apply(new Person()));
+        System.out.println(personMR.apply(new Person()));
 
+        Supplier<Integer> personL2 = () -> Person.howMany();
+        Supplier<Integer> personMR2 = Person::howMany;
+        System.out.println(personL2.get());
+        System.out.println(personMR2.get());
+
+        BiFunction<Person, Person, Integer> personL3 = (p1, p2) -> Person.howMany(p1, p2);
+        BiFunction<Person, Person, Integer> personMR3 = Person::howMany;
+        System.out.println(personL3.apply(new Person(), new Person()));
+        System.out.println(personMR3.apply(new Person(), new Person()));
 
     }
 
@@ -138,8 +152,12 @@ public class CustomFunctionalInterface {
     }
 }
 
-
-
 interface Evaluate<T> {
     boolean isNavigate(T t);
+}
+
+class Person {
+    public static Integer howMany(Person... people) {
+        return people.length;
+    }
 }
