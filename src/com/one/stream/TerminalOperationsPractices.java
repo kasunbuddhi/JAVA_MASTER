@@ -97,5 +97,12 @@ public class TerminalOperationsPractices {
                 ));
         System.out.println(map3);
         System.out.println(map3.getClass());
+
+        //Collectors to groupBy
+        Stream<String> names2 = Stream.of("Joe", "Tom", "Tom", "Alan", "Peter");
+        Map<Integer, List<String>> map4 = names2.collect(
+                Collectors.groupingBy(String::length));
+        System.out.println(map4);
+
     }
 }
