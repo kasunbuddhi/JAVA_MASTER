@@ -2,6 +2,7 @@ package com.one.stream;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -71,5 +72,19 @@ public class TerminalOperationsPractices {
                 .collect(Collectors.averagingDouble(s -> s.length()));
         System.out.println(avg);
 
+        //Collectors to Map
+        Map<String, Integer> map = Stream.of("cake", "biscuits", "apple tart")
+                .collect(Collectors.toMap(
+                        s -> s,
+                        s -> s.length()
+                ));
+        System.out.println(map);
+
+        Map<Integer, String> map2 = Stream.of("cake", "biscuits", "tart")
+                .collect(Collectors.toMap(
+                        s -> s.length(),
+                        s -> s,
+                        (s1, s2) -> s1+","+s2 )); // Merge function, append when duplicate key (length is same)
+        System.out.println(map2);
     }
 }
