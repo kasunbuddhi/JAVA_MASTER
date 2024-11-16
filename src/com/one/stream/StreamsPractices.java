@@ -1,7 +1,9 @@
 package com.one.stream;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 //import java.util.stream.Stream;
 
@@ -43,6 +45,14 @@ public class StreamsPractices {
         List<String> animalList = Arrays.asList("cat", "dog", "sheep");
         Stream<String> streamAnimals = animalList.stream();
         System.out.println("Number Of Elements " + streamAnimals.count());
+
+        Map<String, Integer> namesToAges = new HashMap<>();
+        namesToAges.put("Mike", 22); namesToAges.put("Mary", 24); namesToAges.put("Alice", 31);
+        System.out.println("Number of entries: "+
+                namesToAges
+                        .entrySet()
+                        .stream()
+                        .count());
 
 
     }
