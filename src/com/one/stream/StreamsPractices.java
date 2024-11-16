@@ -1,4 +1,4 @@
-package com.one.lambdas;
+package com.one.stream;
 
 import java.util.Arrays;
 import java.util.List;
