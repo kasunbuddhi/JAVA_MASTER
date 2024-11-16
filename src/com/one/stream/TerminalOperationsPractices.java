@@ -3,6 +3,7 @@ package com.one.stream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -86,5 +87,15 @@ public class TerminalOperationsPractices {
                         s -> s,
                         (s1, s2) -> s1+","+s2 )); // Merge function, append when duplicate key (length is same)
         System.out.println(map2);
+
+        TreeMap<String, Integer> map3 = Stream.of("cake", "biscuits", "apple tart", "cake")
+                .collect(Collectors.toMap(
+                        s -> s,
+                        s -> s.length(),
+                        (len1, len2) -> len1 + len2,// if duplicate keys (same desert) add values
+                        () -> new TreeMap<>()
+                ));
+        System.out.println(map3);
+        System.out.println(map3.getClass());
     }
 }
