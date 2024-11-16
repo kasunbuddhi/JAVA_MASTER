@@ -2,7 +2,9 @@ package com.one.stream;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TerminalOperationsPractices {
@@ -27,6 +29,47 @@ public class TerminalOperationsPractices {
         Integer product = Stream.of(2,3,4)
                 .reduce(1, (a, b) -> a * b);
         System.out.println(product);
+
+        //reduce without identity
+        BinaryOperator<Integer> op = (a,b) -> a+b;
+        Stream<Integer> empty = Stream.empty();
+        Stream<Integer> oneElement = Stream.of(6);
+        Stream<Integer> mulElement = Stream.of(3, 4, 5);
+        empty.reduce(op).ifPresent(System.out::println);
+        oneElement.reduce(op).ifPresent(System.out::println);
+        mulElement.reduce(op).ifPresent(System.out::println);
+
+        Integer val = Stream.of(1, 1, 1)
+                .reduce(1, (a, b) -> a);
+        System.out.println(val);
+
+        Stream<String> stream = Stream.of("car", "bus", "train", "aeroplane");
+        int length = stream.reduce(0, (n, str) -> n + str.length(),
+                (n1, n2) -> n1 + n2);
+        System.out.println(length);
+
+        //Collect
+        StringBuilder word = Stream.of("ad", "jud", "i", "cate")
+                .collect(() -> new StringBuilder(),
+                        (sb, str) -> sb.append(str),
+                        (sb1, sb2) -> sb1.append(sb2));
+        System.out.println(word);
+
+        // Collect, Same as above code with method reference
+        StringBuilder word2 = Stream.of("ad", "jud", "i", "cate")
+                .collect(StringBuilder::new,
+                        StringBuilder::append,
+                        StringBuilder::append);
+        System.out.println(word2);
+
+        //Collectors
+        String str = Stream.of("cake", "biscuits", "apple tart")
+                .collect(Collectors.joining(", "));
+        System.out.println(str);
+
+        Double avg = Stream.of("cake", "biscuits", "apple tart")
+                .collect(Collectors.averagingDouble(s -> s.length()));
+        System.out.println(avg);
 
     }
 }
