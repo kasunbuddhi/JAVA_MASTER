@@ -54,6 +54,8 @@ public class StreamsPractices {
                         .stream()
                         .count());
 
+        Stream<Integer> infStream = Stream.iterate(1, n -> n +2);
+        infStream.limit(5).forEach(System.out::println);
 
     }
 
