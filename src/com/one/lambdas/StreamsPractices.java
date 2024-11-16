@@ -2,6 +2,8 @@ package com.one.lambdas;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
+//import java.util.stream.Stream;
 
 public class StreamsPractices {
     public static void main(String[] args) {
@@ -14,5 +16,38 @@ public class StreamsPractices {
                         .peek(System.out::println)
                         .count()
         );
+
+        //Stream Laziness
+        Stream.of("Alex", "David", "April", "Edward")
+                .filter(s -> {System.out.println("filter: "+ s);
+                    return true;})
+                .forEach(s -> {System.out.println("filter2: "+ s);});
+
+        Stream.of("Alex", "David", "April", "Edward")
+                .map(s -> {System.out.println("filter3: "+ s);
+                    return s.toUpperCase();})
+                .anyMatch(s -> {System.out.println("filter4: "+ s);
+                    return s.startsWith("A");});
+
+        List<String> names = Arrays.asList("April", "ben", "Charlie", "David", "Benildus", "Christian");
+        names.stream()
+                .peek(System.out::println)
+                .filter(s -> {System.out.println("filter5: "+ s);
+                return s.startsWith("B") || s.startsWith("C");})
+                .filter(s -> {System.out.println("filter6: "+ s);
+                    return s.length() > 3;})
+                .limit(1)
+                .forEach(System.out::println);
+
+        //Creating Streams
+        List<String> animalList = Arrays.asList("cat", "dog", "sheep");
+        Stream<String> streamAnimals = animalList.stream();
+        System.out.println("Number Of Elements " + streamAnimals.count());
+
+
     }
+
+
+
+
 }
