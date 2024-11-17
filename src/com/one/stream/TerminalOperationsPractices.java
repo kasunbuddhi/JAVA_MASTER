@@ -1,9 +1,6 @@
 package com.one.stream;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -103,6 +100,11 @@ public class TerminalOperationsPractices {
         Map<Integer, List<String>> map4 = names2.collect(
                 Collectors.groupingBy(String::length));
         System.out.println(map4);
+
+        //Collectors groupingBy()
+        Stream<String> names3 = Stream.of("Joe", "Tom", "Tom", "Alan", "peter");
+        Map<Integer, Set<String>> map5 =  names3.collect(Collectors.groupingBy(String::length, Collectors.toSet()));
+        System.out.println(map5);
 
     }
 }
