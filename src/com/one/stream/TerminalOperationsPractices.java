@@ -125,5 +125,9 @@ public class TerminalOperationsPractices {
         Map<Boolean, List<String>> map8 =  names65.collect( Collectors.partitioningBy(s -> s.length() > 4));
         System.out.println(map8);
 
+        Stream<String> names7 = Stream.of("Joe", "Tom", "Tom", "Alan", "peter", "Teresa");
+        Map<Boolean, Set<String>> map9 =  names7.collect( Collectors.partitioningBy(s -> s.length() > 4, Collectors.toSet()));
+        System.out.println(map9);
+
     }
 }
