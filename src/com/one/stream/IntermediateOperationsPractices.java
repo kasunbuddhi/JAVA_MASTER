@@ -1,6 +1,8 @@
 package com.one.stream;
 
+import javax.xml.namespace.QName;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -41,5 +43,59 @@ public class IntermediateOperationsPractices {
         streamOfList.flatMap(list -> list.stream())
                 .forEach(System.out::print);
 
+        System.out.println();
+
+        //Sorted
+        Person john = new Person("John", 23);
+        Person mary = new Person("mary", 25);
+
+        Stream.of(mary, john)
+                .sorted(Comparator.comparing(p -> p.getAge()))
+                .forEach(System.out::print);
+
+        Stream.of("Tim", "Jim", "Peter", "Ann", "Mary")
+                .peek(name -> System.out.println(" 0." + name))
+                .filter(name -> name.length() == 3)
+                .peek(name -> System.out.println(" 1." + name))
+                .sorted()
+                .peek(name -> System.out.println(" 2." + name))
+                .limit(2)
+                .forEach(name -> System.out.println(" 3. " + name));
+
+
+    }
+}
+
+class Person {
+    String name;
+    int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
