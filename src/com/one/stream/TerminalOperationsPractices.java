@@ -106,5 +106,15 @@ public class TerminalOperationsPractices {
         Map<Integer, Set<String>> map5 =  names3.collect(Collectors.groupingBy(String::length, Collectors.toSet()));
         System.out.println(map5);
 
+        Stream<String> names4 = Stream.of("Joe", "Tom", "Tom", "Alan", "peter");
+        TreeMap<Integer, List<String>> map6 =
+                names4.collect(
+                    Collectors.groupingBy(
+                            String::length,
+                            TreeMap::new,
+                            Collectors.toList()));
+        System.out.println(map6);
+        System.out.println(map6.getClass());
+
     }
 }
