@@ -121,5 +121,9 @@ public class TerminalOperationsPractices {
         Map<Boolean, List<String>> map7 =  names5.collect( Collectors.partitioningBy(s -> s.startsWith("T")));
         System.out.println(map7);
 
+        Stream<String> names65 = Stream.of("Joe", "Tom", "Tom", "Alan", "peter");
+        Map<Boolean, List<String>> map8 =  names65.collect( Collectors.partitioningBy(s -> s.length() > 4));
+        System.out.println(map8);
+
     }
 }
