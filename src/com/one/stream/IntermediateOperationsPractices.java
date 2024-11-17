@@ -1,5 +1,7 @@
 package com.one.stream;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class IntermediateOperationsPractices {
@@ -28,5 +30,16 @@ public class IntermediateOperationsPractices {
         Stream.of("book", "pen", "ruler")
                 .map(s -> s.length())
                 .forEach(System.out::print);
+
+        System.out.println();
+
+        //flatMap
+        List<String> list1 = Arrays.asList("sean", "desmond");
+        List<String> list2 = Arrays.asList("mary", "ann");
+
+        Stream<List<String>> streamOfList = Stream.of(list1, list2);
+        streamOfList.flatMap(list -> list.stream())
+                .forEach(System.out::print);
+
     }
 }
