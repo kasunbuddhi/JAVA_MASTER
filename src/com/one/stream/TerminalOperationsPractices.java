@@ -116,5 +116,10 @@ public class TerminalOperationsPractices {
         System.out.println(map6);
         System.out.println(map6.getClass());
 
+        //partitioning By
+        Stream<String> names5 = Stream.of("Joe", "Tom", "Tom", "Alan", "peter");
+        Map<Boolean, List<String>> map7 =  names5.collect( Collectors.partitioningBy(s -> s.startsWith("T")));
+        System.out.println(map7);
+
     }
 }
