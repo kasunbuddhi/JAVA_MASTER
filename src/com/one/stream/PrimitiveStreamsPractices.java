@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
